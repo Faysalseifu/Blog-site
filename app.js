@@ -33,3 +33,13 @@ app.get("/compose", function(req, res) {
   res.render("compose.ejs");
 });
 
+app.post("/compose", function(req, res) {
+  const post = {
+    title: req.body.title,
+    content: req.body.content
+  };
+  posts.push(post);
+  res.redirect("/");
+});
+
+// ... (your existing code)
