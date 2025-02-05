@@ -9,3 +9,20 @@
     <%= post.content.substring(0, 100) %>... <span class="expand-link"> (touch to expand)</span>
   </p>
 <% }); %>
+
+<script>
+  // JavaScript to handle expanding and collapsing truncated content
+  document.querySelectorAll('.truncated-content').forEach(function(element) {
+    element.addEventListener('click', function() {
+      const content = element.dataset.content;
+      if (element.classList.contains('expanded')) {
+        element.innerHTML = content.substring(0, 100) + '...<span class="expand-link"> (touch to expand)</span>';
+      } else {
+        element.innerHTML = content + '<span class="collapse-link"> (touch to collapse)</span>';
+      }
+      element.classList.toggle('expanded');
+    });
+  });
+</script>
+
+<%- include("./partial/footer") %>
