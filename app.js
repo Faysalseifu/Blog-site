@@ -43,3 +43,24 @@ app.post("/compose", function(req, res) {
 });
 
 // ... (your existing code)
+
+app.get("/posts/:postName", function(req, res) {
+  const requestedTitle = req.params.postName.toLowerCase(); // Convert to lowercase
+  
+  posts.forEach(function(post) {
+    const storedTitle = post.title.toLowerCase(); // Convert to lowercase
+    
+    if (storedTitle === requestedTitle) {
+      console.log("Match found!");
+      res.render("post.ejs", { post: post });
+    }
+  });
+});
+
+// ... (the rest of your existing code)
+
+
+
+app.listen(3000, function() {
+  console.log("Server started on port 3000");
+});
