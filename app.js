@@ -16,3 +16,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 let posts = [];
+
+app.get("/", function (req, res) {
+  res.render("home.ejs", { homeStartingContent: homeStartingContent, posts: posts });
+});
+
+app.get("/about", function(req, res) {
+  res.render("about.ejs", { aboutContent: aboutContent });
+});
+
+app.get("/contact", function(req, res) {
+  res.render("contact.ejs", { contactContent: contactContent });
+});
+
+app.get("/compose", function(req, res) {
+  res.render("compose.ejs");
+});
+
